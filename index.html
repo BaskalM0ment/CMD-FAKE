@@ -230,15 +230,18 @@
                 isStopped = true;  // Set the flag to indicate that Ctrl+C has been pressed
             }
         }
-
         function generateCommandOutput(command) {
-            const prefix = commandPatterns[command] || '';
-            let result = '';
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
-            for (let i = 0; i < 50; i++) {
-                result += characters.charAt(Math.floor(Math.random() * characters.length));
-            }
-            return prefix + result;
+    const prefix = commandPatterns[command] || '';
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+    for (let i = 0; i < 50; i++) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    
+    // Extract prefix text before brackets and wrap bracketed text in a span with white color
+    return prefix.replace(/\[(.*?)\]/g, '<span style="color: white;">[$1]</span>') + result;
+}
+
         }
 
         function scrollToBottom() {
