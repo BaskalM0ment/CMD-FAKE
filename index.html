@@ -128,12 +128,12 @@
         const commandListWindow = document.getElementById('commandListWindow');
 
         const commands = {
-            'help': `Available commands:\nhelp - Show this help menu\nmalware - Learn about Malware\n` +
-                    `dos - Learn about Denial-of-Service\nphishing - Learn about Phishing\nspoofing - Learn about Spoofing\n` +
-                    `identity-based - Learn about Identity-Based\ncode-injection - Learn about Code Injection\n` +
-                    `supply-chain - Learn about Supply Chain\nsocial-engineering - Learn about Social Engineering\n` +
-                    `insider-threats - Learn about Insider Threats\ndns-tunneling - Learn about DNS Tunneling\n` +
-                    `iot-attacks - Learn about IoT-Based attacks\nai-powered - Learn about AI-Powered attacks`,
+            'help': Available commands:\nhelp - Show this help menu\nmalware - Learn about Malware\n +
+                    dos - Learn about Denial-of-Service\nphishing - Learn about Phishing\nspoofing - Learn about Spoofing\n +
+                    identity-based - Learn about Identity-Based\ncode-injection - Learn about Code Injection\n +
+                    supply-chain - Learn about Supply Chain\nsocial-engineering - Learn about Social Engineering\n +
+                    insider-threats - Learn about Insider Threats\ndns-tunneling - Learn about DNS Tunneling\n +
+                    iot-attacks - Learn about IoT-Based attacks\nai-powered - Learn about AI-Powered attacks,
             'malware': 'Malware refers to malicious software designed to harm, exploit, or otherwise compromise the target device or network.',
             'dos': 'Denial-of-Service attacks aim to make a machine or network resource unavailable by overwhelming it with requests.',
             'phishing': 'Phishing involves tricking individuals into providing sensitive information through deceptive emails or websites.',
@@ -194,14 +194,14 @@
         });
 
         function executeCommand(command) {
-            appendOutput(`> ${command}`);
+            appendOutput(> ${command});
             if (commands[command]) {
                 appendOutput(commands[command]);
                 if (commandPatterns[command]) {
                     startInfiniteOutput(command);
                 }
             } else {
-                appendOutput(`Command not found: ${command}`);
+                appendOutput(Command not found: ${command});
             }
         }
 
@@ -230,18 +230,15 @@
                 isStopped = true;  // Set the flag to indicate that Ctrl+C has been pressed
             }
         }
-        function generateCommandOutput(command) {
-    const prefix = commandPatterns[command] || '';
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
-    for (let i = 0; i < 50; i++) {
-        result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    
-    // Extract prefix text before brackets and wrap bracketed text in a span with white color
-    return prefix.replace(/\[(.*?)\]/g, '<span style="color: white;">[$1]</span>') + result;
-}
 
+        function generateCommandOutput(command) {
+            const prefix = commandPatterns[command] || '';
+            let result = '';
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+            for (let i = 0; i < 50; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return prefix + result;
         }
 
         function scrollToBottom() {
